@@ -47,10 +47,12 @@ namespace Sitecore.MultisiteHttpModule.Errors
             var targetErrorPage = !String.IsNullOrEmpty(errorPagePath) ? errorPagePath : _settings.DefaultErrorPage;
 
             HttpContext.Current.Server.ClearError();
-            HttpContext.Current.Response.Redirect(String.Format("http://{0}{1}?aspxerrorpath={2}",
-                Context.Site.TargetHostName,
-                targetErrorPage,
-                HttpContext.Current.Server.UrlEncode(HttpContext.Current.Request.Url.LocalPath)), true);
+            HttpContext.Current.Response.StatusCode = 500;
+            HttpContext.Current.Server.Transfer(targetErrorPage);
+            //HttpContext.Current.Response.Redirect(String.Format("http://{0}{1}?aspxerrorpath={2}",
+            //    Context.Site.TargetHostName,
+            //    targetErrorPage,
+            //    HttpContext.Current.Server.UrlEncode(HttpContext.Current.Request.Url.LocalPath)), true);
         }
 
     }
