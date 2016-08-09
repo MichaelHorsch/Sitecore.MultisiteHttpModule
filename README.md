@@ -54,6 +54,7 @@ public void Application_Error(object sender, EventArgs args)
     <handlers>
         <add name="RobotsHandler" path="/robots.txt" verb="GET" type="Sitecore.MultisiteHttpModule.Robots.RobotsHandler, Sitecore.MultisiteHttpModule" />
     </handlers>
+    <httpErrors errorMode="Custom" existingResponse="PassThrough" />
 </system.webServer>
 ```
 * Add error handling code into Global.ascx.cs
