@@ -106,6 +106,8 @@ The 500 page functionality can be configured by populating the **errorPagePath**
 ### Robots.txt usage
 The robots.txt functionality can be configured by populating the **robotsTxtLocation** attribute on the site node. This needs to be populated with the location of a text document containing the contents you wish to display when robots.txt is called for that site. If this is specified then the standard robots.txt will be returned, if it exists.
 
+Important Note: To match a site, the code does a contains compare the DnsSafeUrl from the request to the configured hostName. If you use a wildcard, it may not match and the Robots.txt will not function correctly. You can always | delimit your host names to make sure there is a match.
+
 ## Credits
 
 This module was built upon the work in two blog posts by:
